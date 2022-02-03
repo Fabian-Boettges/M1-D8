@@ -5,6 +5,10 @@
       .myHeading {
         color: red;
       }
+
+      .toggleColors {
+        color: yellow;
+      }
     </style>
   </head>
   <body>
@@ -51,6 +55,7 @@
       </h2>
     </div>
     <script>
+
       /* EXERCISE 1
        Write a function for changing the title of the document in something else.
       */
@@ -82,9 +87,23 @@
        Write a function for changing the href property of every link to https://www.google.com
       */
 
-      const changeUrls = function () {
-        //
+      const changeUrls = function (newHref) {
+        let links = document.getElementsByTagName("a");
+        for (let link of links) {
+          link.href = "https://www.google.com"
+        }
       };
+       
+
+      // other syntax for loop
+        
+       // for (let i = 0; i < links.lenght; i++) {
+       //   let currentLink = links[i]
+       //   currentLink.href =  newHref
+       // }
+      //
+       // changeUrls("https://www.google.com")
+
 
       /* EXERCISE 5
        Write a function for adding a new list item in the second unordered list.
@@ -123,8 +142,11 @@
       */
 
       const makeItClickable = function () {
-        //
+        let h1 = document.getElementsByTagName("h1")[0] //array index 0
+        h1.classList.toggle("toggleColors")
       };
+
+    
 
       /* EXERCISE 10
        Change the footer text with something else when the user clicks on it.
