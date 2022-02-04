@@ -34,7 +34,7 @@
 
       <a href="strive.school">This link goes to Strive School</a>
 
-      <div>
+      <div id="paragraphDiv">
         <p>This text is just for the exercise</p>
       </div>
 
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div>
+    <div class = "footer">
       <p>And this text is just for the exercise too!</p>
       <h2 style="color: red">
         Save this page on your computer and open it with VSCode to get the
@@ -64,7 +64,7 @@
         document.getElementById("pageHeader").innerText = newTitle
       };
 
-      changeTitle("New title for the page")
+      changeTitle("NEW TITLE FOR THE PAGE")
 
       /* EXERCISE 2
        Write a function for changing the class of the title of the page in "myHeading".
@@ -74,25 +74,34 @@
         let newClass = document.getElementById("title");
         newClass.classList.add("myHeading")
       };
+      
 
       /* EXERCISE 3
        Write a function for changing the text of only the p which are children of a div.
       */
 
-      const changePcontent = function () {
-        //
+      const changePcontent = function (newText) {
+        let nestedParagraphs = document.querySelectorAll("div p")
+        for (let nestedParagraph of nestedParagraphs) {
+          nestedParagraph.innerText = newText
+        }
+        
       };
+
+      changePcontent("PARAGRAPH INSIDE OF A DIV")
 
       /* EXERCISE 4
        Write a function for changing the href property of every link to https://www.google.com
       */
 
-      const changeUrls = function (newHref) {
+      const changeUrls = function () {
         let links = document.getElementsByTagName("a");
         for (let link of links) {
           link.href = "https://www.google.com"
         }
       };
+
+      changeUrls()
        
 
       // other syntax for loop
@@ -109,42 +118,64 @@
        Write a function for adding a new list item in the second unordered list.
       */
 
-      const addToTheSecond = function (content) {
-        //
+      const addToTheSecond = function () {
+        let secondListNode = document.getElementById("secondList")
+        const li = document.createElement("li")
+        li.innerText = "new list item created in java"
+        secondListNode.appendChild(li)
       };
+
+      addToTheSecond()
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
       const addParagraph = function (content) {
-        //
+        let paragraphContainer = document.getElementById("paragraphDiv")
+        const newParagraph = document.createElement("p")
+        paragraphContainer.appendChild(newParagraph)
+        newParagraph.innerText = content
       };
+
+      addParagraph("New Paragraph created with java")
 
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
       */
 
       const firstUlDisappear = function () {
-        //
+        let firstUl = document.querySelectorAll("ul")[0]
+        firstUl.remove();
       };
+
+      firstUlDisappear()
 
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
 
       const paintItGreen = function () {
-        //
+        let uls = document.querySelectorAll("ul")
+        for (let ul of uls) {
+          ul.style.background = "green"  // for some reason, ul.classList.add("b-green") doesnt work
+        }
       };
+
+      paintItGreen()
 
       /* EXERCISE 9
        Make the heading of the page change color every time the user clicks on it.
       */
 
       const makeItClickable = function () {
-        let h1 = document.getElementsByTagName("h1")[0] //array index 0
-        h1.classList.toggle("toggleColors")
-      };
+        let h1 = document.querySelector("h1")             //document.getElementsByTagName("h1")[0] //array index 0
+        h1.addEventListener("click", function (e) {
+          e.target.classList.toggle("toggleColors");
+        })
+      }
+
+      makeItClickable()
 
     
 
@@ -153,8 +184,11 @@
       */
 
       const changeFooterText = function () {
-        //
+        let footer = document.querySelector(".footer")
+        footer.addEventListener("click", function(e) {e.target.innerText = "New text for the Footer" })
       };
+
+      changeFooterText()
 
       /* EXERCISE 11
        Attach an event listener to the input field in the page for console logging its value just after any keystroke.
@@ -168,7 +202,7 @@
       */
 
       window.onload = function () {
-        //
+        alert("Welcome")
       };
 
       /* EXERCISE 13
